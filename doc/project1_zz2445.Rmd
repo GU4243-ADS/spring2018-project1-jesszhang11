@@ -1,0 +1,179 @@
+---
+title: "Project1_zz2445"
+author: "Jessica Zhang"
+date: "2/5/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r, message = F, warning = F}
+packages.used <- c("ggplot2", "dplyr", "tibble", "tidyr",  "stringr", "tidytext", "topicmodels", "wordcloud", "ggridges", "lexicon", "tm")
+
+# check packages that need to be installed.
+packages.needed <- setdiff(packages.used, intersect(installed.packages()[,1], packages.used))
+
+# install additional packages
+if(length(packages.needed) > 0) {
+  install.packages(packages.needed, dependencies = TRUE, repos = 'http://cran.us.r-project.org')
+}
+
+library(ggplot2)
+library(dplyr)
+library(tibble)
+library(tidyr)
+library(stringr)
+library(tidytext)
+library(topicmodels)
+library(wordcloud)
+library(ggridges)
+library(lexicon)
+library(tm)
+
+source("../lib/multiplot.R")
+```
+
+## Read in the data and Data Cleaning
+The following code assumes that the dataset `spooky.csv` lives in a `data` folder (and that we are inside a `docs` folder).
+
+```{r}
+spooky <- read.csv('../data/spooky.csv', as.is = TRUE)
+spooky$author <- as.factor(spooky$author)
+# Drop all puctuation and transform words into lower case
+spooky1 <- unnest_tokens(spooky, word, text)
+# Make a table with one word per row and remove `stop words`
+spooky_wrd <- anti_join(spooky1, stop_words, by = "word")
+```
+
+## Analysis on Authors' Uses of Discourse Markers
+```{r}
+# Find discourse markers used in text
+spooky_ndm <- spooky1[spooky1$word %in% discourse_markers_alemany$marker,]
+
+# Counts total numbers of discourse markers each author used
+author_dis <- count(group_by(spooky_ndm, author))
+author_dis
+
+# Counts number of times each author used each discourse marker
+author_words1 <- count(group_by(spooky_ndm, word, author))
+
+# Counts number of times each marker was used
+all_words1    <- rename(count(group_by(spooky_ndm, word)), all = n)
+
+author_words1 <- left_join(author_words1, all_words1, by = "word")
+author_words1 <- arrange(author_words1, desc(all))
+author_words1 <- ungroup(head(author_words1, 81))
+
+# Make a word cloud for Discourse Markers
+words_ndm <- count(group_by(spooky_ndm, word))$word
+freqs_ndm <- count(group_by(spooky_ndm, word))$n
+
+head(sort(freqs_ndm, decreasing = TRUE))
+png("../figs/Worldcloud_ndm.png")
+wordcloud(words_ndm, freqs_ndm, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+dev.off()
+
+ggplot(author_words1) +
+  geom_col(aes(reorder(word, all, FUN = min), n, fill = author)) +
+  xlab(NULL) +
+  coord_flip() +
+  facet_wrap(~ author) +
+  theme(legend.position = "none")
+```
+
+## Analysis on Horror Elements and Vocabulary
+```{r}
+horror <- read.csv('../data/HorrorVocab.csv', as.is = TRUE, header = FALSE)
+colnames(horror) <- "vocab"
+
+# https://www.eapoe.org/papers/psblctrs/pl19741s.htm
+poev <- read.csv('../data/poevocab.csv', as.is = TRUE, header = FALSE)
+colnames(poev) <- "vocab"
+
+# How many horror elements or vocabulary were used in text
+spooky_horror <- spooky_wrd[spooky_wrd$word %in% horror$vocab,]
+ggplot(spooky_horror) +
+  geom_bar(aes(author, fill = author)) +
+  theme(legend.position = "none")
+
+# Wordcloud showing most frequently used horror words
+words_ho <- count(group_by(spooky_horror, word))$word
+freqs_ho <- count(group_by(spooky_horror, word))$n
+
+head(sort(freqs_ho, decreasing = TRUE))
+png("../figs/Worldcloud_horror.png")
+wordcloud(words_ho, freqs_ho, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+dev.off()
+
+# How many Poe's vocabulary were used in text
+spooky_poe <- spooky_wrd[spooky_wrd$word %in% poev$vocab,]
+ggplot(spooky_poe) +
+  geom_bar(aes(author, fill = author)) +
+  theme(legend.position = "none")
+
+# Wordcloud showing most frequently used Poe's words
+words_poe <- count(group_by(spooky_poe, word))$word
+freqs_poe <- count(group_by(spooky_poe, word))$n
+
+head(sort(freqs_poe, decreasing = TRUE))
+png("../figs/Worldcloud_poe.png")
+wordcloud(words_poe, freqs_poe, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+dev.off()
+```
+
+## Analysis on OED
+```{r}
+# https://github.com/dwyl/english-words/blob/master/words.txt
+dict <- read.csv('../data/dict.csv', as.is = TRUE, header = FALSE)
+colnames(dict) <- "vocab"
+dict$vocab <- tolower(dict$vocab)
+spooky_oed <- spooky_wrd[!spooky_wrd$word %in% dict$vocab,]
+
+# Wordcloud showing non-OED words
+words_oed <- count(group_by(spooky_oed, word))$word
+freqs_oed <- count(group_by(spooky_oed, word))$n
+
+head(sort(freqs_oed, decreasing = TRUE))
+png("../figs/Worldcloud_oed.png")
+wordcloud(words_oed, freqs_oed, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+dev.off()
+
+# Counts number of times each author used each word
+author_oed <- count(group_by(spooky_oed, word, author))
+
+# Counts number of times each word was used
+all_oed  <- rename(count(group_by(spooky_oed, word)), all = n)
+
+author_oed <- left_join(author_oed, all_oed, by = "word")
+author_oed <- arrange(author_oed, desc(all))
+author_oed <- ungroup(head(author_oed, 50))
+  
+ggplot(author_oed) +
+  geom_col(aes(word, n, fill = author)) +
+  labs(x = NULL, y = "tf-idf") +
+  theme(legend.position = "none") +
+  facet_wrap(~ author, ncol = 3, scales = "free") +
+  coord_flip() +
+  labs(y = "TF-IDF values")
+```
+
+## Sentiment Analysis
+```{r}
+get_sentiments('nrc')
+sentiments <- inner_join(spooky_wrd, get_sentiments('nrc'), by="word")
+sentiments <- rbind(sentiments[sentiments$sentiment=="negative",], sentiments[sentiments$sentiment=="fear",],sentiments[sentiments$sentiment=="sadness",], sentiments[sentiments$sentiment=="anger",], sentiments[sentiments$sentiment=="disgust",])
+count(sentiments, author, sentiment)
+
+ggplot(count(sentiments, author, sentiment)) + 
+  geom_col(aes(sentiment, n, fill = sentiment)) + 
+  facet_wrap(~ author) +
+  coord_flip() +
+  theme(legend.position = "none")
+
+nrow(sentiments[sentiments$author=="MWS",])
+nrow(sentiments[sentiments$author=="EAP",])
+nrow(sentiments[sentiments$author=="HPL",])
+```
