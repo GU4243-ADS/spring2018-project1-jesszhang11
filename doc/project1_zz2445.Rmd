@@ -76,28 +76,29 @@ png("../figs/Worldcloud_ndm.png")
 wordcloud(words_ndm, freqs_ndm, max.words = 50, color = c("blue4", "yellow2", "grey2"))
 dev.off()
 
+png("../figs/ndm.png")
 ggplot(author_words1) +
   geom_col(aes(reorder(word, all, FUN = min), n, fill = author)) +
   xlab(NULL) +
   coord_flip() +
   facet_wrap(~ author) +
   theme(legend.position = "none")
+dev.off()
 ```
 
 ## Analysis on Horror Elements and Vocabulary
 ```{r}
+# http://www.enchantedlearning.com/wordlist/halloween.shtml
 horror <- read.csv('../data/HorrorVocab.csv', as.is = TRUE, header = FALSE)
 colnames(horror) <- "vocab"
 
-# https://www.eapoe.org/papers/psblctrs/pl19741s.htm
-poev <- read.csv('../data/poevocab.csv', as.is = TRUE, header = FALSE)
-colnames(poev) <- "vocab"
-
 # How many horror elements or vocabulary were used in text
 spooky_horror <- spooky_wrd[spooky_wrd$word %in% horror$vocab,]
+png("../figs/horror.png")
 ggplot(spooky_horror) +
   geom_bar(aes(author, fill = author)) +
   theme(legend.position = "none")
+dev.off()
 
 # Wordcloud showing most frequently used horror words
 words_ho <- count(group_by(spooky_horror, word))$word
@@ -107,12 +108,21 @@ head(sort(freqs_ho, decreasing = TRUE))
 png("../figs/Worldcloud_horror.png")
 wordcloud(words_ho, freqs_ho, max.words = 50, color = c("blue4", "yellow2", "grey2"))
 dev.off()
+```
+
+## Analysis with Poe's unique vocabulary list
+```{r}
+# https://www.eapoe.org/papers/psblctrs/pl19741s.htm
+poev <- read.csv('../data/poevocab.csv', as.is = TRUE, header = FALSE)
+colnames(poev) <- "vocab"
 
 # How many Poe's vocabulary were used in text
 spooky_poe <- spooky_wrd[spooky_wrd$word %in% poev$vocab,]
+png("../figs/poe.png")
 ggplot(spooky_poe) +
   geom_bar(aes(author, fill = author)) +
   theme(legend.position = "none")
+dev.off()
 
 # Wordcloud showing most frequently used Poe's words
 words_poe <- count(group_by(spooky_poe, word))$word
@@ -151,6 +161,7 @@ author_oed <- left_join(author_oed, all_oed, by = "word")
 author_oed <- arrange(author_oed, desc(all))
 author_oed <- ungroup(head(author_oed, 50))
   
+png("../figs/oed.png")
 ggplot(author_oed) +
   geom_col(aes(word, n, fill = author)) +
   labs(x = NULL, y = "tf-idf") +
@@ -158,6 +169,7 @@ ggplot(author_oed) +
   facet_wrap(~ author, ncol = 3, scales = "free") +
   coord_flip() +
   labs(y = "TF-IDF values")
+dev.off()
 ```
 
 ## Sentiment Analysis
@@ -167,11 +179,13 @@ sentiments <- inner_join(spooky_wrd, get_sentiments('nrc'), by="word")
 sentiments <- rbind(sentiments[sentiments$sentiment=="negative",], sentiments[sentiments$sentiment=="fear",],sentiments[sentiments$sentiment=="sadness",], sentiments[sentiments$sentiment=="anger",], sentiments[sentiments$sentiment=="disgust",])
 count(sentiments, author, sentiment)
 
+png("../figs/sa.png")
 ggplot(count(sentiments, author, sentiment)) + 
   geom_col(aes(sentiment, n, fill = sentiment)) + 
   facet_wrap(~ author) +
   coord_flip() +
   theme(legend.position = "none")
+dev.off()
 
 nrow(sentiments[sentiments$author=="MWS",])
 nrow(sentiments[sentiments$author=="EAP",])
