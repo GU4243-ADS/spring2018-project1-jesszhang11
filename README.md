@@ -1,5 +1,5 @@
 # Spring2018
-# Project 1:
+# Project 1: SPOOKY Textual Analysis
 
 ----
 
