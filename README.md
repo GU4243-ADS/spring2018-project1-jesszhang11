@@ -46,7 +46,7 @@ When I researched on the authors, I learned that Edgar Allan Poe had a great pas
 
 In the time since his passing, a great many words that Poe has used have entered the Oxford English Dictionary (OED). A further indication of Poe???s significance, both linguistic and literary, is the fact that there are a number of entries in the OED that are derived from Poe???s own name, most of which are used to describe fiction writing similar to his. 
 
-Hence, I wanted to find if the other two authors have used any of Poe's words in their works. I found a list of Poe's words from (https://www.eapoe.org/papers/psblctrs/pl19741s.htm), which contains 329 Poe's words.
+Hence, I wanted to find if the other two authors have used any of Poe's words in their works. I found a list of Poe's words from (https://www.eapoe.org/papers/psblctrs/pl19741s.htm), which contains 329 single words first used or coined by Poe.
 
 ![image](figs/poe.png)
 
