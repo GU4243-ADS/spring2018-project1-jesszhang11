@@ -55,7 +55,7 @@ From the graph, H.P. Lovecraft used more non-OED words than the others, Edgar Al
 
 ![image](figs/Worldcloud_oed.png)
 
-Here is a wordcloud of most frequently used non-OED words by the three authors.
+Here is a wordcloud of most frequently used non-OED words by the three authors. We see that most of these words are invented by the authors. These three author's unique nomenclature and contribution to the English language has inspired many generations of horror writers.
 
 ## Sentiment Analysis
 
@@ -63,4 +63,4 @@ For my own curiosity, I also applied a sentiment analysis using only the "sadnes
 
 ![image](figs/sa.png)
 
-From my result, it only shows that Mary Shelley used more "negative", "sadness" and "anger" words than the other authors. There is no significant difference between Edgar Allan Poe and H.P. Lovecraft.
+From my result, it shows that Mary Shelley used more "negative", "sadness" and "anger" words than the other authors. There is no significant difference between Edgar Allan Poe and H.P. Lovecraft.

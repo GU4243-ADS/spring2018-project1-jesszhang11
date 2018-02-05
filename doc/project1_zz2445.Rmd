@@ -2,7 +2,9 @@
 title: "Project1_zz2445"
 author: "Jessica Zhang"
 date: "2/5/2018"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
