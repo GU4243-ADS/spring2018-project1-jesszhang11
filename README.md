@@ -30,9 +30,7 @@ However, it's hard to conclude anything significant from this finding, so I deci
 
 I thought it might be more interesting to look at each author's use of horror vocabulary in their text rather than grammar to analyze their styles. 
 
-I found a horror words list from (http://www.enchantedlearning.com/wordlist/halloween.shtml), which contains 205 horror words. 
-
-Then, I matched this words list with my dataset to find which author used more horror words in writing.
+I found a horror words list from (http://www.enchantedlearning.com/wordlist/halloween.shtml), which contains 205 horror words. Then, I matched this words list with my dataset to find which author used more horror words in writing.
 
 ![image](figs/horror.png)
 
