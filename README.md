@@ -15,30 +15,52 @@ Term: Spring 2018
 
 ### Learn about the three authors' linguistic and literary significance
 
+Defination of Discourse Marker -- A discourse marker is a word or phrase that plays a role in managing the flow and structure of discourse. Since their main function is at the level of discourse (sequences of utterances) rather than at the level of utterances or sentences, discourse markers are relatively syntax-independent and usually do not change the truth conditional meaning of the sentence. Examples of discourse markers include the particles oh, well, now, then, you know, and I mean, and the discourse connectives so, because, and, but, and or.
+
+From past studies, discourse markers account for the parameters of social class (Archer and Culpeper 2003), gender and directionality. It becomes clear that the direction of use reveals the interactive nature of discourse markers. I would like to analyze three authors' text here to study if they are different in use of discourse markers.
+
 First of all, I used the discourse_markers_alemany dataset from the lexicon package as reference. I matched the clean spooky data with this dataset.
 
-I found that each author's use of discourse markers and three authors' total uses of discourse markers (wordcloud) were calculated.
+Each author's use of discourse markers and three authors' total uses of discourse markers (wordcloud) were calculated.
 
 ![image](figs/ndm.png)
 ![image](figs/Worldcloud_ndm.png)
 
-From both graphs, three authors used similar numbers of discourse markers. "and" is the marker all of them used most frequently. Edgar Allan Poe used more "a" and "in" in text than the other authors. 
+From both graphs, three authors used similar numbers of discourse markers. "and" is the marker all of them used most frequently. Edgar Allan Poe used more "a" and "in" in text than the other authors. Nevertheless, since the three authors' uses of discourse markers are very similar, I am unable to conclude any significance of their uses of discourse markers.
 
-However, it's hard to conclude anything significant from this finding, so I decided to focus more on special literary aspects that we often can find in horror stories.
+Next, I decided to focus more on special literary aspects that we often can find in horror stories.
 
 ## Which author used more supernatural elements and horror vocabulary?
 
 I thought it might be more interesting to look at each author's use of horror vocabulary in their text rather than grammar to analyze their styles. 
 
-I found a horror words list from (http://www.enchantedlearning.com/wordlist/halloween.shtml), which contains 205 horror words. Then, I matched this words list with my dataset to find which author used more horror words in writing.
+I found a horror words list from (http://www.enchantedlearning.com/wordlist/halloween.shtml), which contains 205 horror words. 
+
+Here is a head() view of the first 6 elements from the horror words list:
+  vocab
+1	afraid			
+2	afterlife			
+3	alarming			
+4	alien			
+5	angel			
+6	apparition
+
+
+Then, I matched this horror words list with my spooky dataset to find which author used more horror words in writing.
 
 ![image](figs/horror.png)
 
 The graph shows that H.P. Lovecraft used more horror vocabulary than the other two authors. Edgar Allan Poe and Mary Shelley used almost same amount of horror vocabulary.
 
+I also made a wordcloud of the most frequently used horror words by the three authors. 
 ![image](figs/Worldcloud_horror.png)
 
-I also made a wordcloud of the most frequently used horror words by the three authors. It shows that "night" and "death" are used most frequently by the three authors. "strange", "dead", "fear" and "spirit" are the second most frequently used group of words.
+It shows that "night" and "death" are used most frequently by the three authors. "strange", "dead", "fear" and "spirit" are the second most frequently used group of words.
+
+If we take a closer look at the most frequently used horror words by each author.
+
+EAP: ![image](figs/Worldcloud_horrorE.png) HPL: ![image](figs/Worldcloud_horrorH.png) MWS: ![image](figs/Worldcloud_horrorM.png)
+
 
 ## Poe's words
 

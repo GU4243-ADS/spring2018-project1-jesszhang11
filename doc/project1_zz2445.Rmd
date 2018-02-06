@@ -80,7 +80,7 @@ dev.off()
 
 png("../figs/ndm.png")
 ggplot(author_words1) +
-  geom_col(aes(reorder(word, all, FUN = min), n, fill = author)) +
+  geom_col(aes(reorder(word, all), n, fill = author)) +
   xlab(NULL) +
   coord_flip() +
   facet_wrap(~ author) +
@@ -93,6 +93,7 @@ dev.off()
 # http://www.enchantedlearning.com/wordlist/halloween.shtml
 horror <- read.csv('../data/HorrorVocab.csv', as.is = TRUE, header = FALSE)
 colnames(horror) <- "vocab"
+head(horror)
 
 # How many horror elements or vocabulary were used in text
 spooky_horror <- spooky_wrd[spooky_wrd$word %in% horror$vocab,]
@@ -109,6 +110,36 @@ freqs_ho <- count(group_by(spooky_horror, word))$n
 head(sort(freqs_ho, decreasing = TRUE))
 png("../figs/Worldcloud_horror.png")
 wordcloud(words_ho, freqs_ho, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+dev.off()
+
+# EAP
+horror_EAP <- spooky_wrd[spooky_wrd$author == "EAP",]
+words_EAP <- count(group_by(horror_EAP, word))$word
+freqs_EAP <- count(group_by(horror_EAP, word))$n
+
+head(sort(freqs_EAP, decreasing = TRUE))
+png("../figs/Worldcloud_horrorE.png")
+wordcloud(words_EAP, freqs_EAP, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+dev.off()
+
+# HPL
+horror_HPL <- spooky_wrd[spooky_wrd$author == "HPL",]
+words_HPL <- count(group_by(horror_HPL, word))$word
+freqs_HPL <- count(group_by(horror_HPL, word))$n
+
+head(sort(freqs_HPL, decreasing = TRUE))
+png("../figs/Worldcloud_horrorH.png")
+wordcloud(words_HPL, freqs_HPL, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+dev.off()
+
+# MWS
+horror_MWS <- spooky_wrd[spooky_wrd$author == "MWS",]
+words_MWS <- count(group_by(horror_MWS, word))$word
+freqs_MWS <- count(group_by(horror_MWS, word))$n
+
+head(sort(freqs_MWS, decreasing = TRUE))
+png("../figs/Worldcloud_horrorM.png")
+wordcloud(words_MWS, freqs_MWS, max.words = 50, color = c("blue4", "yellow2", "grey2"))
 dev.off()
 ```
 
