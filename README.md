@@ -62,6 +62,7 @@ If we take a closer look at the most frequently used horror words by each author
 EAP: ![image](figs/Worldcloud_horrorE.png) HPL: ![image](figs/Worldcloud_horrorH.png) MWS: ![image](figs/Worldcloud_horrorM.png)
 
 
+
 ## Poe's words
 
 When I researched on the authors, I learned that Edgar Allan Poe had a great passion for language and for both revitalizing uncommon words and creating new ones. 
