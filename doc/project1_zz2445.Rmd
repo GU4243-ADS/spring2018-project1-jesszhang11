@@ -113,7 +113,7 @@ wordcloud(words_ho, freqs_ho, scale = c(14,.5), max.words = 50, color = c("blue4
 dev.off()
 
 # EAP
-horror_EAP <- spooky_wrd[spooky_wrd$author == "EAP",]
+horror_EAP <- spooky_horror[spooky_horror$author == "EAP",]
 words_EAP <- count(group_by(horror_EAP, word))$word
 freqs_EAP <- count(group_by(horror_EAP, word))$n
 
@@ -123,7 +123,7 @@ wordcloud(words_EAP, freqs_EAP, scale = c(14,.5), max.words = 50, color = c("blu
 dev.off()
 
 # HPL
-horror_HPL <- spooky_wrd[spooky_wrd$author == "HPL",]
+horror_HPL <- spooky_horror[spooky_horror$author == "HPL",]
 words_HPL <- count(group_by(horror_HPL, word))$word
 freqs_HPL <- count(group_by(horror_HPL, word))$n
 
@@ -133,7 +133,7 @@ wordcloud(words_HPL, freqs_HPL, scale = c(14,.5), max.words = 50, color = c("blu
 dev.off()
 
 # MWS
-horror_MWS <- spooky_wrd[spooky_wrd$author == "MWS",]
+horror_MWS <- spooky_horror[spooky_horror$author == "MWS",]
 words_MWS <- count(group_by(horror_MWS, word))$word
 freqs_MWS <- count(group_by(horror_MWS, word))$n
 
@@ -175,6 +175,12 @@ colnames(dict) <- "vocab"
 dict$vocab <- tolower(dict$vocab)
 spooky_oed <- spooky_wrd[!spooky_wrd$word %in% dict$vocab,]
 
+png("../figs/oedall.png")
+ggplot(spooky_oed) +
+  geom_bar(aes(author, fill = author)) +
+  theme(legend.position = "none")
+dev.off()
+
 # Wordcloud showing non-OED words
 words_oed <- count(group_by(spooky_oed, word))$word
 freqs_oed <- count(group_by(spooky_oed, word))$n
@@ -182,6 +188,36 @@ freqs_oed <- count(group_by(spooky_oed, word))$n
 head(sort(freqs_oed, decreasing = TRUE))
 png("../figs/Worldcloud_oed.png")
 wordcloud(words_oed, freqs_oed, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
+dev.off()
+
+# EAP
+oed_EAP <- spooky_oed[spooky_oed$author == "EAP",]
+words_E <- count(group_by(oed_EAP, word))$word
+freqs_E <- count(group_by(oed_EAP, word))$n
+
+head(sort(freqs_E, decreasing = TRUE))
+png("../figs/Worldcloud_oedE.png")
+wordcloud(words_E, freqs_E, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
+dev.off()
+
+# HPL
+oed_HPL <- spooky_oed[spooky_oed$author == "HPL",]
+words_H <- count(group_by(oed_HPL, word))$word
+freqs_H <- count(group_by(oed_HPL, word))$n
+
+head(sort(freqs_H, decreasing = TRUE))
+png("../figs/Worldcloud_oedH.png")
+wordcloud(words_H, freqs_H, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
+dev.off()
+
+# MWS
+oed_MWS <- spooky_oed[spooky_oed$author == "MWS",]
+words_M <- count(group_by(oed_MWS, word))$word
+freqs_M <- count(group_by(oed_MWS, word))$n
+
+head(sort(freqs_M, decreasing = TRUE))
+png("../figs/Worldcloud_oedM.png")
+wordcloud(words_M, freqs_M, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
 dev.off()
 
 # Counts number of times each author used each word
@@ -193,7 +229,7 @@ all_oed  <- rename(count(group_by(spooky_oed, word)), all = n)
 author_oed <- left_join(author_oed, all_oed, by = "word")
 author_oed <- arrange(author_oed, desc(all))
 author_oed <- ungroup(head(author_oed, 50))
-  
+
 png("../figs/oed.png")
 ggplot(author_oed) +
   geom_col(aes(word, n, fill = author)) +

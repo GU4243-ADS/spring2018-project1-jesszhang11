@@ -37,14 +37,7 @@ I thought it might be more interesting to look at each author's use of horror vo
 I found a horror words list from (http://www.enchantedlearning.com/wordlist/halloween.shtml), which contains 205 horror words. 
 
 Here is a head() view of the first 6 elements from the horror words list:
-  vocab
-1	afraid			
-2	afterlife			
-3	alarming			
-4	alien			
-5	angel			
-6	apparition
-
+afraid, afterlife, alarming, alien, angel, apparition
 
 Then, I matched this horror words list with my spooky dataset to find which author used more horror words in writing.
 
@@ -60,10 +53,15 @@ It shows that "night" and "death" are used most frequently by the three authors.
 If we take a closer look at the most frequently used horror words by each author.
 
 EAP: 
+
 ![image](figs/Worldcloud_horrorE.png) 
+
 HPL: 
+
 ![image](figs/Worldcloud_horrorH.png) 
+
 MWS: 
+
 ![image](figs/Worldcloud_horrorM.png)
 
 It's funny how Edgar Allan Poe's most frequently used word is "night", while that of H.P. Lovecraft is "light". In general, it seems like Edgar Allan Poe and H.P. Lovecraft used more nouns such as "hand", "death" and "horror". Mary Shelley used more verbs such as "feel", "heard", and "found".
@@ -92,15 +90,32 @@ We know that all of the three authors have made significant contributions to the
 
 I found a OED dictionary database from (https://github.com/dwyl/english-words/blob/master/words.txt), which contains 466,455 common English words. Then I matched my text data with this dictionary database, and analyzed on how many non-OED words each author used.
 
+![image](figs/oedall.png)
+
 ![image](figs/oed.png)
 
-From the graph, H.P. Lovecraft used more non-OED words than the others, Edgar Allan Poe used more non-OED words than Mary Shelley, who only used a few non-OED words in her writings. 
+From graphs above, H.P. Lovecraft used more non-OED words than the others, Edgar Allan Poe used more non-OED words than Mary Shelley, who used fewer non-OED words in her writings. 
 
-This finding supports existed recognitions of three authors' language contributions. Both Edgar Allan Poe and Mary Shelley have many of their own creation of words included in the OED. H.P. Lovecraft is known for his unique nomenclature, which has inspired many generations of horror writers.
+This finding supports existed recognitions of three authors' language contributions -- both Edgar Allan Poe and Mary Shelley have many of their own creation of words included in the OED. H.P. Lovecraft is known for his unique nomenclature, which has inspired many generations of horror writers.
 
 ![image](figs/Worldcloud_oed.png)
 
 Here is a wordcloud of most frequently used non-OED words by the three authors. We see that most of these words are invented by the authors. These three author's unique nomenclature and contribution to the English language has inspired many generations of horror writers.
+
+EAP:
+
+![image](figs/Worldcloud_oedE.png)
+
+HPL:
+
+![image](figs/Worldcloud_oedH.png)
+
+MWS:
+
+![image](figs/Worldcloud_oedM.png)
+
+I also took a closer look into wordclouds of most frequently used non-OED words by each author. Although it's hard to compare those non-OED words used by each author, we can definitely conclude that all of these three authors have used nomenclature and created vocabularies in their writings.
+
 
 ## Sentiment Analysis
 
