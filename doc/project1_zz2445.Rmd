@@ -84,7 +84,8 @@ ggplot(author_words1) +
   xlab(NULL) +
   coord_flip() +
   facet_wrap(~ author) +
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  scale_fill_manual(values = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 ```
 
@@ -100,7 +101,8 @@ spooky_horror <- spooky_wrd[spooky_wrd$word %in% horror$vocab,]
 png("../figs/horror.png")
 ggplot(spooky_horror) +
   geom_bar(aes(author, fill = author)) +
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  scale_fill_manual(values = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 
 # Wordcloud showing most frequently used horror words
@@ -109,7 +111,7 @@ freqs_ho <- count(group_by(spooky_horror, word))$n
 
 head(sort(freqs_ho, decreasing = TRUE))
 png("../figs/Worldcloud_horror.png")
-wordcloud(words_ho, freqs_ho, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_ho, freqs_ho, scale = c(14,.5), max.words = 50, color = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 
 # EAP
@@ -119,7 +121,7 @@ freqs_EAP <- count(group_by(horror_EAP, word))$n
 
 head(sort(freqs_EAP, decreasing = TRUE))
 png("../figs/Worldcloud_horrorE.png")
-wordcloud(words_EAP, freqs_EAP, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_EAP, freqs_EAP, scale = c(14,.5), max.words = 50, color = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 
 # HPL
@@ -129,7 +131,7 @@ freqs_HPL <- count(group_by(horror_HPL, word))$n
 
 head(sort(freqs_HPL, decreasing = TRUE))
 png("../figs/Worldcloud_horrorH.png")
-wordcloud(words_HPL, freqs_HPL, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_HPL, freqs_HPL, scale = c(14,.5), max.words = 50, color = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 
 # MWS
@@ -139,7 +141,7 @@ freqs_MWS <- count(group_by(horror_MWS, word))$n
 
 head(sort(freqs_MWS, decreasing = TRUE))
 png("../figs/Worldcloud_horrorM.png")
-wordcloud(words_MWS, freqs_MWS, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_MWS, freqs_MWS, scale = c(14,.5), max.words = 50, color = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 ```
 
@@ -154,7 +156,8 @@ spooky_poe <- spooky_wrd[spooky_wrd$word %in% poev$vocab,]
 png("../figs/poe.png")
 ggplot(spooky_poe) +
   geom_bar(aes(author, fill = author)) +
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  scale_fill_manual(values = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 
 # Wordcloud showing most frequently used Poe's words
@@ -163,7 +166,7 @@ freqs_poe <- count(group_by(spooky_poe, word))$n
 
 head(sort(freqs_poe, decreasing = TRUE))
 png("../figs/Worldcloud_poe.png")
-wordcloud(words_poe, freqs_poe, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_poe, freqs_poe, scale = c(14,.5), max.words = 50, color = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 ```
 
@@ -178,7 +181,8 @@ spooky_oed <- spooky_wrd[!spooky_wrd$word %in% dict$vocab,]
 png("../figs/oedall.png")
 ggplot(spooky_oed) +
   geom_bar(aes(author, fill = author)) +
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  scale_fill_manual(values = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 
 # Wordcloud showing non-OED words
@@ -187,7 +191,7 @@ freqs_oed <- count(group_by(spooky_oed, word))$n
 
 head(sort(freqs_oed, decreasing = TRUE))
 png("../figs/Worldcloud_oed.png")
-wordcloud(words_oed, freqs_oed, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_oed, freqs_oed, scale = c(14,.5), max.words = 50, color = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 
 # EAP
@@ -197,7 +201,7 @@ freqs_E <- count(group_by(oed_EAP, word))$n
 
 head(sort(freqs_E, decreasing = TRUE))
 png("../figs/Worldcloud_oedE.png")
-wordcloud(words_E, freqs_E, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_E, freqs_E, scale = c(14,.5), max.words = 50, color = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 
 # HPL
@@ -207,7 +211,7 @@ freqs_H <- count(group_by(oed_HPL, word))$n
 
 head(sort(freqs_H, decreasing = TRUE))
 png("../figs/Worldcloud_oedH.png")
-wordcloud(words_H, freqs_H, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_H, freqs_H, scale = c(14,.5), max.words = 50, color = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 
 # MWS
@@ -217,7 +221,7 @@ freqs_M <- count(group_by(oed_MWS, word))$n
 
 head(sort(freqs_M, decreasing = TRUE))
 png("../figs/Worldcloud_oedM.png")
-wordcloud(words_M, freqs_M, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_M, freqs_M, scale = c(14,.5), max.words = 50, color = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 
 # Counts number of times each author used each word
@@ -237,7 +241,8 @@ ggplot(author_oed) +
   theme(legend.position = "none") +
   facet_wrap(~ author, ncol = 3, scales = "free") +
   coord_flip() +
-  labs(y = "TF-IDF values")
+  labs(y = "TF-IDF values") +
+  scale_fill_manual(values = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 ```
 
@@ -253,7 +258,8 @@ ggplot(count(sentiments, author, sentiment)) +
   geom_col(aes(sentiment, n, fill = sentiment)) + 
   facet_wrap(~ author) +
   coord_flip() +
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  scale_fill_manual(values = c("royalblue3", "skyblue2", "paleturquoise2", "gold1", "lightgoldenrod2"))
 dev.off()
 
 nrow(sentiments[sentiments$author=="MWS",])
