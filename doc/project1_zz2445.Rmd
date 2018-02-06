@@ -75,7 +75,7 @@ freqs_ndm <- count(group_by(spooky_ndm, word))$n
 
 head(sort(freqs_ndm, decreasing = TRUE))
 png("../figs/Worldcloud_ndm.png")
-wordcloud(words_ndm, freqs_ndm, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_ndm, freqs_ndm, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
 dev.off()
 
 png("../figs/ndm.png")
@@ -109,7 +109,7 @@ freqs_ho <- count(group_by(spooky_horror, word))$n
 
 head(sort(freqs_ho, decreasing = TRUE))
 png("../figs/Worldcloud_horror.png")
-wordcloud(words_ho, freqs_ho, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_ho, freqs_ho, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
 dev.off()
 
 # EAP
@@ -119,7 +119,7 @@ freqs_EAP <- count(group_by(horror_EAP, word))$n
 
 head(sort(freqs_EAP, decreasing = TRUE))
 png("../figs/Worldcloud_horrorE.png")
-wordcloud(words_EAP, freqs_EAP, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_EAP, freqs_EAP, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
 dev.off()
 
 # HPL
@@ -129,7 +129,7 @@ freqs_HPL <- count(group_by(horror_HPL, word))$n
 
 head(sort(freqs_HPL, decreasing = TRUE))
 png("../figs/Worldcloud_horrorH.png")
-wordcloud(words_HPL, freqs_HPL, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_HPL, freqs_HPL, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
 dev.off()
 
 # MWS
@@ -139,7 +139,7 @@ freqs_MWS <- count(group_by(horror_MWS, word))$n
 
 head(sort(freqs_MWS, decreasing = TRUE))
 png("../figs/Worldcloud_horrorM.png")
-wordcloud(words_MWS, freqs_MWS, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_MWS, freqs_MWS, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
 dev.off()
 ```
 
@@ -163,7 +163,7 @@ freqs_poe <- count(group_by(spooky_poe, word))$n
 
 head(sort(freqs_poe, decreasing = TRUE))
 png("../figs/Worldcloud_poe.png")
-wordcloud(words_poe, freqs_poe, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_poe, freqs_poe, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
 dev.off()
 ```
 
@@ -181,7 +181,7 @@ freqs_oed <- count(group_by(spooky_oed, word))$n
 
 head(sort(freqs_oed, decreasing = TRUE))
 png("../figs/Worldcloud_oed.png")
-wordcloud(words_oed, freqs_oed, max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_oed, freqs_oed, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
 dev.off()
 
 # Counts number of times each author used each word
