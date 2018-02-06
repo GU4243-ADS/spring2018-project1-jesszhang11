@@ -59,13 +59,19 @@ It shows that "night" and "death" are used most frequently by the three authors.
 
 If we take a closer look at the most frequently used horror words by each author.
 
-EAP: ![image](figs/Worldcloud_horrorE.png) HPL: ![image](figs/Worldcloud_horrorH.png) MWS: ![image](figs/Worldcloud_horrorM.png)
+EAP: 
+![image](figs/Worldcloud_horrorE.png) 
+HPL: 
+![image](figs/Worldcloud_horrorH.png) 
+MWS: 
+![image](figs/Worldcloud_horrorM.png)
 
+It's funny how Edgar Allan Poe's most frequently used word is "night", while that of H.P. Lovecraft is "light". In general, it seems like Edgar Allan Poe and H.P. Lovecraft used more nouns such as "hand", "death" and "horror". Mary Shelley used more verbs such as "feel", "heard", and "found".
 
 
 ## Poe's words
 
-When I researched on the authors, I learned that Edgar Allan Poe had a great passion for language and for both revitalizing uncommon words and creating new ones. 
+When I researched on the three authors, I learned that Edgar Allan Poe had a great passion for language and for both revitalizing uncommon words and creating new ones. 
 
 In the time since his passing, a great many words that Poe has used have entered the Oxford English Dictionary (OED). A further indication of Poe???s significance, both linguistic and literary, is the fact that there are a number of entries in the OED that are derived from Poe???s own name, most of which are used to describe fiction writing similar to his. 
 
