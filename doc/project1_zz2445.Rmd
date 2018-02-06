@@ -75,7 +75,7 @@ freqs_ndm <- count(group_by(spooky_ndm, word))$n
 
 head(sort(freqs_ndm, decreasing = TRUE))
 png("../figs/Worldcloud_ndm.png")
-wordcloud(words_ndm, freqs_ndm, scale = c(14,.5), max.words = 50, color = c("blue4", "yellow2", "grey2"))
+wordcloud(words_ndm, freqs_ndm, scale = c(14,.5), max.words = 50, color = c("royalblue3", "skyblue2", "yellow2"))
 dev.off()
 
 png("../figs/ndm.png")
